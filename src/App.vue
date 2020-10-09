@@ -14,6 +14,9 @@
             exact
             exact-active-class="active"
             :disabled="page.disabled"
+            tabindex="0"
+            v-b-tooltip.top
+            :title="page.tooltip"
           >
             {{ page.name }}
           </b-nav-item>
@@ -30,11 +33,11 @@ export default {
   data() {
     return {
       pages: [
-        { name: 'Classic', disabled: false },
-        { name: 'AES', disabled: true },
-        { name: 'RSA', disabled: true },
-        { name: 'MD', disabled: true },
-        { name: 'SHA', disabled: true }
+        { name: 'Classic', disabled: false, tooltip: 'Classic Cryptography' },
+        { name: 'AES', disabled: true, tooltip: 'AES Unavailable' },
+        { name: 'RSA', disabled: true, tooltip: 'RSA Unavailable' },
+        { name: 'MD', disabled: true, tooltip: 'MD Unavailable' },
+        { name: 'SHA', disabled: true, tooltip: 'SHA Unavailable' }
       ]
     }
   }
