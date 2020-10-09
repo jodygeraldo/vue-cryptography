@@ -1,121 +1,136 @@
 <template>
-  <b-card-group deck>
-    <b-card header="Encryption" header-tag="header">
-      <b-card-text>
-        <b-form-group
-          class="mb-3"
-          label="Text to Encode"
-          label-for="encodeInput"
-        >
-          <b-form-input
-            id="encodeInput"
-            type="text"
-            v-model="encodeInput"
-            placeholder="Enter text"
-            required
-          ></b-form-input>
-        </b-form-group>
+  <div>
+    <b-card-group deck class="mb-3">
+      <b-card header="Encryption" header-tag="header">
+        <b-card-text>
+          <b-form-group
+            class="mb-3"
+            label="Text to Encode"
+            label-for="encodeInput"
+          >
+            <b-form-input
+              id="encodeInput"
+              type="text"
+              v-model="encodeInput"
+              placeholder="Enter text"
+              required
+            ></b-form-input>
+          </b-form-group>
 
-        <b-form-group
-          class="mb-3"
-          label="Key"
-          label-for="encodeKey"
-          description="The default key value is 3 (Julius Caesar)"
-        >
-          <b-form-input
-            id="encodeKey"
-            type="number"
-            v-model="encodeKey"
-            placeholder="Enter text"
-            required
-          ></b-form-input>
-        </b-form-group>
+          <b-form-group
+            class="mb-3"
+            label="Key"
+            label-for="encodeKey"
+            description="The default key value is 3 (Julius Caesar)"
+          >
+            <b-form-input
+              id="encodeKey"
+              type="number"
+              v-model="encodeKey"
+              placeholder="Enter key"
+              required
+            ></b-form-input>
+          </b-form-group>
 
-        <b-form-group
-          class="mb-3"
-          label="Original Text"
-          label-for="originalText"
-        >
-          <b-form-input
-            id="originalText"
-            type="text"
-            v-model="originalText"
-            disabled
-          ></b-form-input>
-        </b-form-group>
+          <b-form-group
+            class="mb-3"
+            label="Original Text"
+            label-for="originalText"
+          >
+            <b-form-input
+              id="originalText"
+              type="text"
+              v-model="originalText"
+              disabled
+            ></b-form-input>
+          </b-form-group>
 
-        <b-form-group class="mb-3" label="Secret Code" label-for="secretCode">
-          <b-form-input
-            id="secretCode"
-            type="text"
-            v-model="secretCode"
-            disabled
-          ></b-form-input>
-        </b-form-group>
-      </b-card-text>
-      <b-button variant="primary">Encode</b-button>
-    </b-card>
-
-    <b-card header="Decryption" header-tag="header">
-      <b-card-text>
-        <b-form-group
-          class="mb-3"
-          label="Text to Decode"
-          label-for="decodeInput"
+          <b-form-group class="mb-3" label="Secret Code" label-for="secretCode">
+            <b-form-input
+              id="secretCode"
+              type="text"
+              v-model="secretCode"
+              disabled
+            ></b-form-input>
+          </b-form-group>
+        </b-card-text>
+        <b-button
+          variant="primary"
+          :disabled="encodeInputCheck"
+          @click.prevent="encode"
+          >Encode</b-button
         >
-          <b-form-input
-            id="decodeInput"
-            type="text"
-            v-model="decodeInput"
-            placeholder="Enter text"
-            required
-          ></b-form-input>
-        </b-form-group>
+      </b-card>
 
-        <b-form-group
-          class="mb-3"
-          label="Key"
-          label-for="decodeKey"
-          description="The default key value is 3 (Julius Caesar)"
-        >
-          <b-form-input
-            id="decodeKey"
-            type="number"
-            v-model="decodeKey"
-            placeholder="Enter text"
-            required
-          ></b-form-input>
-        </b-form-group>
+      <b-card header="Decryption" header-tag="header">
+        <b-card-text>
+          <b-form-group
+            class="mb-3"
+            label="Text to Decode"
+            label-for="decodeInput"
+          >
+            <b-form-input
+              id="decodeInput"
+              type="text"
+              v-model="decodeInput"
+              placeholder="Enter text"
+              required
+            ></b-form-input>
+          </b-form-group>
 
-        <b-form-group
-          class="mb-3"
-          label="Original Code"
-          label-for="originalCode"
-        >
-          <b-form-input
-            id="originalCode"
-            type="text"
-            v-model="originalCode"
-            disabled
-          ></b-form-input>
-        </b-form-group>
+          <b-form-group
+            class="mb-3"
+            label="Key"
+            label-for="decodeKey"
+            description="The default key value is 3 (Julius Caesar)"
+          >
+            <b-form-input
+              id="decodeKey"
+              type="number"
+              v-model="decodeKey"
+              placeholder="Enter key"
+              required
+            ></b-form-input>
+          </b-form-group>
 
-        <b-form-group
-          class="mb-3"
-          label="Secret Message"
-          label-for="secretMessage"
+          <b-form-group
+            class="mb-3"
+            label="Original Code"
+            label-for="originalCode"
+          >
+            <b-form-input
+              id="originalCode"
+              type="text"
+              v-model="originalCode"
+              disabled
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            class="mb-3"
+            label="Secret Message"
+            label-for="secretMessage"
+          >
+            <b-form-input
+              id="secretMessage"
+              type="text"
+              v-model="secretMessage"
+              disabled
+            ></b-form-input>
+          </b-form-group>
+        </b-card-text>
+        <b-button
+          variant="primary"
+          :disabled="decodeInputCheck"
+          @click.prevent="decode"
+          >Decode</b-button
         >
-          <b-form-input
-            id="secretMessage"
-            type="text"
-            v-model="secretMessage"
-            disabled
-          ></b-form-input>
-        </b-form-group>
-      </b-card-text>
-      <b-button variant="primary">Decode</b-button>
-    </b-card>
-  </b-card-group>
+      </b-card>
+    </b-card-group>
+    <b-alert show variant="info" class="text-center"
+      >The rotation is ASCII printable characters</b-alert
+    >
+  </div>
 </template>
 
 <script>
@@ -130,12 +145,67 @@ export default {
       originalText: '',
       secretCode: '',
       originalCode: '',
-      secretMessage: ''
+      secretMessage: '',
+      letterRotation: [],
+      codeRotation: []
     }
   },
   methods: {
-    test() {
-      console.log('button clicked')
+    getCodeRotation(type) {
+      const baseRotation = this.letterRotation.slice(0)
+
+      let key = 3
+      if (type === 'encode') {
+        key = this.encodeKey
+      } else if (type === 'decode') {
+        key = this.decodeKey
+      }
+
+      const spliced = baseRotation.splice(0, key)
+      this.codeRotation = baseRotation.concat(spliced)
+    },
+    encode() {
+      this.getCodeRotation('encode')
+      const encodedLetter = []
+      const plainIndex = []
+
+      for (const el of this.encodeInput)
+        plainIndex.push(this.letterRotation.indexOf(el))
+
+      for (const el of plainIndex) encodedLetter.push(this.codeRotation[el])
+
+      this.originalText = this.encodeInput
+      this.secretCode = encodedLetter.join('')
+      this.encodeInput = ''
+    },
+    decode() {
+      this.getCodeRotation('decode')
+      const decodedLetter = []
+      const cipherIndex = []
+
+      for (const el of this.decodeInput)
+        cipherIndex.push(this.codeRotation.indexOf(el))
+
+      for (const el of cipherIndex) decodedLetter.push(this.letterRotation[el])
+
+      this.originalCode = this.decodeInput
+      this.secretMessage = decodedLetter.join('')
+      this.decodeInput = ''
+    }
+  },
+  computed: {
+    encodeInputCheck() {
+      if (this.encodeInput === '' || this.encodeKey === '') return true
+      return false
+    },
+    decodeInputCheck() {
+      if (this.decodeInput === '' || this.decodeKey === '') return true
+      return false
+    }
+  },
+  created() {
+    for (let i = 32; i <= 126; i++) {
+      this.letterRotation.push(String.fromCharCode(i))
     }
   }
 }
