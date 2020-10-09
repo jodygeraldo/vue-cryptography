@@ -19,7 +19,7 @@
 
           <b-form-group
             class="mb-3"
-            label="Key"
+            label="Private Key"
             label-for="encodeKey"
             description="The default key value is 3 (Julius Caesar)"
           >
@@ -80,7 +80,7 @@
 
           <b-form-group
             class="mb-3"
-            label="Key"
+            label="Private Key"
             label-for="decodeKey"
             description="The default key value is 3 (Julius Caesar)"
           >
