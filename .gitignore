@@ -2,6 +2,13 @@
 node_modules
 /dist
 
+# Firebase
+.idea
+**/.firebaserc
+
+# Firebase Patch #
+.runtimeconfig.json
+.firebase/
 
 # local env files
 .env.local
