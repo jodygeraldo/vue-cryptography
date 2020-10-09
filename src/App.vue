@@ -9,12 +9,13 @@
         <b-nav tabs align="center">
           <b-nav-item
             v-for="page in pages"
-            :key="page"
-            :to="{ name: `${page}` }"
+            :key="page.name"
+            :to="{ name: `${page.name}` }"
             exact
             exact-active-class="active"
+            :disabled="page.disabled"
           >
-            {{ page }}
+            {{ page.name }}
           </b-nav-item>
         </b-nav>
       </div>
@@ -28,7 +29,13 @@
 export default {
   data() {
     return {
-      pages: ['Classic', 'AES', 'RSA', 'MD', 'SHA']
+      pages: [
+        { name: 'Classic', disabled: false },
+        { name: 'AES', disabled: true },
+        { name: 'RSA', disabled: true },
+        { name: 'MD', disabled: true },
+        { name: 'SHA', disabled: true }
+      ]
     }
   }
 }
