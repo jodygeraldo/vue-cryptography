@@ -21,7 +21,7 @@
             class="mb-3"
             label="Private Key"
             label-for="encodeKey"
-            description="The default key value is 3 (Julius Caesar)"
+            description="The default key value is 3"
           >
             <b-form-input
               id="encodeKey"
@@ -82,7 +82,7 @@
             class="mb-3"
             label="Private Key"
             label-for="decodeKey"
-            description="The default key value is 3 (Julius Caesar)"
+            description="The default key value is 3"
           >
             <b-form-input
               id="decodeKey"
