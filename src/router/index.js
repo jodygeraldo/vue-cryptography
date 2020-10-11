@@ -22,7 +22,7 @@ const routes = [
   },
   {
     path: '/md-5',
-    name: 'MD5',
+    name: 'MD-5',
     component: () => import('../views/MD5.vue')
   },
   {
