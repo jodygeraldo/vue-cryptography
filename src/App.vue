@@ -43,9 +43,15 @@ export default {
         {
           name: 'MD-5',
           disabled: false,
-          tooltip: 'Hash function cryptography message digest algorithm 5'
+          tooltip:
+            'Hash function cryptography Message Digest Algorithm 5 (MD-5)'
         },
-        { name: 'SHA-256', disabled: true, tooltip: 'SHA Unavailable' }
+        {
+          name: 'SHA-256',
+          disabled: false,
+          tooltip:
+            'Hash function cryptography Secure Hash Algorithm 2 (SHA-256)'
+        }
       ]
     }
   }

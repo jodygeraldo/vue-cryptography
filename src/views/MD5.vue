@@ -53,7 +53,7 @@
             class="mb-3"
             label="Encrypted text"
             label-for="decodeInput"
-            description="The encrypted text is 32 characters long"
+            description="The MD-5 encrypted text is 32 characters long"
           >
             <b-form-input
               id="decodeInput"
@@ -501,7 +501,11 @@ export default {
           const dataString = JSON.stringify(response.data)
           const originalText = dataString.split('"')
           this.originalCode = this.decodeInput
-          this.secretMessage = originalText[9]
+          if (originalText[0] === '{') {
+            this.secretMessage = originalText[9]
+          } else {
+            this.secretMessage = '[No result found in our database]'
+          }
           this.decodeInput = ''
         })
         .catch(error => console.log(error.response))
