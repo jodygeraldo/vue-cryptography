@@ -23,7 +23,9 @@
         </b-nav>
       </div>
 
-      <router-view />
+      <transition name="slide-fade" mode="out-in">
+        <router-view />
+      </transition>
     </b-container>
   </div>
 </template>
@@ -69,5 +71,18 @@ export default {
   font-size: calc(1.625rem + 2.5vw);
   font-weight: 300;
   line-height: 1.2;
+}
+
+.slide-fade-enter {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.2s ease;
+}
+.slide-fade-leave-to {
+  transform: translateX(-10px);
+  opacity: 0;
 }
 </style>
