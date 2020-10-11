@@ -36,7 +36,7 @@ export default {
         { name: 'Classic', disabled: false, tooltip: 'Classic Cryptography' },
         { name: 'AES', disabled: true, tooltip: 'AES Unavailable' },
         { name: 'RSA', disabled: true, tooltip: 'RSA Unavailable' },
-        { name: 'MD', disabled: true, tooltip: 'MD Unavailable' },
+        { name: 'MD5', disabled: false, tooltip: 'MD-5 On Work' },
         { name: 'SHA', disabled: true, tooltip: 'SHA Unavailable' }
       ]
     }

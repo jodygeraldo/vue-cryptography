@@ -13,22 +13,22 @@ const routes = [
   {
     path: '/aes',
     name: 'AES',
-    component: () => import(/* webpackChunkName: "aes" */ '../views/AES.vue')
+    component: () => import('../views/AES.vue')
   },
   {
     path: '/rsa',
     name: 'RSA',
-    component: () => import(/* webpackChunkName: "rsa" */ '../views/RSA.vue')
+    component: () => import('../views/RSA.vue')
   },
   {
-    path: '/md',
-    name: 'MD',
-    component: () => import(/* webpackChunkName: "md" */ '../views/MD.vue')
+    path: '/md-5',
+    name: 'MD5',
+    component: () => import('../views/MD5.vue')
   },
   {
     path: '/sha',
     name: 'SHA',
-    component: () => import(/* webpackChunkName: "sha" */ '../views/SHA.vue')
+    component: () => import('../views/SHA.vue')
   }
 ]
 
