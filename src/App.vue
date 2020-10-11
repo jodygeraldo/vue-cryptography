@@ -33,11 +33,19 @@ export default {
   data() {
     return {
       pages: [
-        { name: 'Classic', disabled: false, tooltip: 'Classic Cryptography' },
+        {
+          name: 'Classic',
+          disabled: false,
+          tooltip: 'Symmetric key cryptography classic'
+        },
         { name: 'AES', disabled: true, tooltip: 'AES Unavailable' },
         { name: 'RSA', disabled: true, tooltip: 'RSA Unavailable' },
-        { name: 'MD-5', disabled: false, tooltip: 'MD-5 Hash Function' },
-        { name: 'SHA', disabled: true, tooltip: 'SHA Unavailable' }
+        {
+          name: 'MD-5',
+          disabled: false,
+          tooltip: 'Hash function cryptography message digest algorithm 5'
+        },
+        { name: 'SHA-256', disabled: true, tooltip: 'SHA Unavailable' }
       ]
     }
   }

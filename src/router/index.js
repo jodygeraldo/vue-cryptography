@@ -26,9 +26,9 @@ const routes = [
     component: () => import('../views/MD5.vue')
   },
   {
-    path: '/sha',
-    name: 'SHA',
-    component: () => import('../views/SHA.vue')
+    path: '/sha-256',
+    name: 'SHA-256',
+    component: () => import('../views/SHA256.vue')
   }
 ]
 
