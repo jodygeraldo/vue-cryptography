@@ -472,9 +472,25 @@ export default {
         encryptedText: this.secretCode
       }
 
-      axios.post('https://vue-crypto-8ce2a.firebaseio.com/md-5.json', data)
-
       this.encodeInput = ''
+
+      axios
+        .get(
+          `https://vue-crypto-8ce2a.firebaseio.com/md-5.json?orderBy="originalText"&equalTo="${data.originalText}"`
+        )
+        .then(response => {
+          const dataString = JSON.stringify(response.data)
+          const originalText = dataString.split('"')
+          const duplicate = originalText[5]
+
+          if (!duplicate) {
+            axios.post(
+              'https://vue-crypto-8ce2a.firebaseio.com/md-5.json',
+              data
+            )
+          }
+        })
+        .catch(error => console.log(error.response))
     },
     decode() {
       axios
