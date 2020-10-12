@@ -73,7 +73,7 @@
               id="decodeInput"
               type="text"
               v-model="decodeInput"
-              placeholder="Enter text"
+              placeholder="Enter encrypted text"
               required
             ></b-form-input>
           </b-form-group>
