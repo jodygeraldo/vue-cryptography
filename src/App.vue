@@ -23,7 +23,11 @@
         </b-nav>
       </div>
 
-      <router-view />
+      <notifications group="notif" animation-type="velocity" />
+
+      <transition name="slide-fade" mode="out-in">
+        <router-view />
+      </transition>
     </b-container>
   </div>
 </template>
@@ -33,11 +37,25 @@ export default {
   data() {
     return {
       pages: [
-        { name: 'Classic', disabled: false, tooltip: 'Classic Cryptography' },
+        {
+          name: 'Classic',
+          disabled: false,
+          tooltip: 'Symmetric key cryptography classic'
+        },
         { name: 'AES', disabled: true, tooltip: 'AES Unavailable' },
         { name: 'RSA', disabled: true, tooltip: 'RSA Unavailable' },
-        { name: 'MD', disabled: true, tooltip: 'MD Unavailable' },
-        { name: 'SHA', disabled: true, tooltip: 'SHA Unavailable' }
+        {
+          name: 'MD-5',
+          disabled: false,
+          tooltip:
+            'Hash function cryptography Message Digest Algorithm 5 (MD-5)'
+        },
+        {
+          name: 'SHA-256',
+          disabled: false,
+          tooltip:
+            'Hash function cryptography Secure Hash Algorithm 2 (SHA-256)'
+        }
       ]
     }
   }
@@ -55,5 +73,18 @@ export default {
   font-size: calc(1.625rem + 2.5vw);
   font-weight: 300;
   line-height: 1.2;
+}
+
+.slide-fade-enter {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.2s ease;
+}
+.slide-fade-leave-to {
+  transform: translateX(-10px);
+  opacity: 0;
 }
 </style>

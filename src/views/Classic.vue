@@ -73,7 +73,7 @@
               id="decodeInput"
               type="text"
               v-model="decodeInput"
-              placeholder="Enter text"
+              placeholder="Enter encrypted text"
               required
             ></b-form-input>
           </b-form-group>
@@ -177,6 +177,13 @@ export default {
       this.originalText = this.encodeInput
       this.secretCode = encodedLetter.join('')
       this.encodeInput = ''
+
+      this.$notify({
+        group: 'notif',
+        type: 'success',
+        title: 'Text Successfully Encrypted',
+        text: 'You can copy the encrypted text from secret code input field.'
+      })
     },
     decode() {
       this.getCodeRotation('decode')
@@ -191,6 +198,14 @@ export default {
       this.originalCode = this.decodeInput
       this.secretMessage = decodedLetter.join('')
       this.decodeInput = ''
+
+      this.$notify({
+        group: 'notif',
+        type: 'success',
+        title: 'Text Successfully Decrypted',
+        text:
+          'The encrypted text was successfully decrypted, you can see the result in the secret message input field.'
+      })
     }
   },
   computed: {
