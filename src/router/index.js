@@ -29,6 +29,14 @@ const routes = [
     path: '/sha-256',
     name: 'SHA-256',
     component: () => import('../views/SHA256.vue')
+  },
+  {
+    path: '/404',
+    component: () => import('../views/404.vue')
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ]
 
