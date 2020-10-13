@@ -23,7 +23,7 @@
         </b-nav>
       </div>
 
-      <notifications group="notif" />
+      <notifications group="notif" animation-type="velocity" />
 
       <transition name="slide-fade" mode="out-in">
         <router-view />

@@ -5,8 +5,9 @@ import './plugins/bootstrap-vue'
 import App from './App.vue'
 import router from './router'
 import Notifications from 'vue-notification'
+import velocity from 'velocity-animate'
 
-Vue.use(Notifications)
+Vue.use(Notifications, { velocity })
 
 Vue.config.productionTip = false
 
