@@ -125,7 +125,7 @@ export default {
       return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits))
     },
     addUnsigned(lX, lY) {
-      var lX4, lY4, lX8, lY8, lResult
+      let lX4, lY4, lX8, lY8, lResult
 
       lX8 = lX & 0x80000000
 

@@ -152,7 +152,7 @@ export default {
     gamma1256(x) {
       return this.s(x, 17) ^ this.s(x, 19) ^ this.r(x, 10)
     },
-    core_sha256(m, l) {
+    coreSHA256(m, l) {
       const K = new Array(
         0x428a2f98,
         0x71374491,
@@ -325,7 +325,7 @@ export default {
       this.encodeInput = this.utf8Encode(this.encodeInput)
       this.originalText = this.encodeInput
       this.secretCode = this.binb2hex(
-        this.core_sha256(
+        this.coreSHA256(
           this.str2binb(this.encodeInput),
           this.encodeInput.length * this.chrsz
         )
