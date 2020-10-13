@@ -117,6 +117,10 @@
         >
       </b-card>
     </b-card-group>
+
+    <b-alert show variant="info" class="text-center">
+      AES encryption and decryption using cryptoJS
+    </b-alert>
   </div>
 </template>
 
