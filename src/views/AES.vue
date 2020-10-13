@@ -148,13 +148,42 @@ export default {
       this.secretCode = AES.encrypt(this.encodeInput, this.encodeKey).toString()
       this.encodeInput = ''
       this.encodeKey = ''
+
+      this.$notify({
+        group: 'notif',
+        type: 'success',
+        title: 'Text Successfully Encrypted',
+        text: 'You can copy the encrypted text from secret code input field.'
+      })
     },
     decode() {
       const bytes = AES.decrypt(this.decodeInput, this.decodeKey)
       this.originalCode = this.decodeInput
       this.secretMessage = bytes.toString(encUTF8)
+
       this.decodeInput = ''
       this.decodeKey = ''
+
+      if (this.secretMessage !== '') {
+        this.$notify({
+          group: 'notif',
+          type: 'success',
+          title: 'Text Successfully Decrypted',
+          text:
+            'The encrypted text was successfully decrypted, you can see the result in the secret message input field.'
+        })
+      } else {
+        this.secretMessage =
+          'There is no secret message from the combination of given encrypted text and the password.'
+
+        this.$notify({
+          group: 'notif',
+          type: 'warn',
+          title: 'Decryption Process Failed',
+          text:
+            'There is no secret message from the combination of given encrypted text and the password.'
+        })
+      }
     }
   },
   computed: {
