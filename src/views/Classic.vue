@@ -127,9 +127,9 @@
         >
       </b-card>
     </b-card-group>
-    <b-alert show variant="info" class="text-center"
-      >The rotation is ASCII printable characters</b-alert
-    >
+    <b-alert show variant="info" class="text-center">
+      The rotation is ASCII printable characters
+    </b-alert>
   </div>
 </template>
 

@@ -42,7 +42,11 @@ export default {
           disabled: false,
           tooltip: 'Symmetric key cryptography classic'
         },
-        { name: 'AES', disabled: true, tooltip: 'AES Unavailable' },
+        {
+          name: 'AES',
+          disabled: false,
+          tooltip: 'Symmetric key cryptography Advanced Encryption Standard'
+        },
         { name: 'RSA', disabled: true, tooltip: 'RSA Unavailable' },
         {
           name: 'MD-5',
