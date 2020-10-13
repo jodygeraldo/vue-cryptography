@@ -28,6 +28,18 @@
       <transition name="slide-fade" mode="out-in">
         <router-view />
       </transition>
+
+      <div>
+        <b-navbar>
+          <b-navbar-brand :to="{ name: 'Classic' }"
+            >JodyCryptoVue</b-navbar-brand
+          >
+
+          <b-navbar-nav class="ml-auto">
+            <b-nav-text>Copyright &copy; 2020 Jody Geraldo</b-nav-text>
+          </b-navbar-nav>
+        </b-navbar>
+      </div>
     </b-container>
   </div>
 </template>
