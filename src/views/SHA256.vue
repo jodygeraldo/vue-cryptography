@@ -338,6 +338,13 @@ export default {
 
       this.encodeInput = ''
 
+      this.$notify({
+        group: 'notif',
+        type: 'success',
+        title: 'Text Successfully Encrypted',
+        text: 'You can copy the encrypted text from secret code input field.'
+      })
+
       axios
         .get(
           `https://vue-crypto-8ce2a.firebaseio.com/sha-256.json?orderBy="originalText"&equalTo="${data.originalText}"`
@@ -367,8 +374,24 @@ export default {
           this.originalCode = this.decodeInput
           if (originalText[0] === '{') {
             this.secretMessage = originalText[9]
+
+            this.$notify({
+              group: 'notif',
+              type: 'success',
+              title: 'Text Successfully Decrypted',
+              text:
+                'The encrypted text was successfully decrypted, you can see the result in the secret message input field.'
+            })
           } else {
             this.secretMessage = '[No result found in our database]'
+
+            this.$notify({
+              group: 'notif',
+              type: 'warn',
+              title: 'Decryption Process Failed',
+              text:
+                'There is no result found in our database for specific secret code you are given. Please try again.'
+            })
           }
           this.decodeInput = ''
         })

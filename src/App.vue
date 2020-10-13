@@ -23,6 +23,8 @@
         </b-nav>
       </div>
 
+      <notifications group="notif" />
+
       <transition name="slide-fade" mode="out-in">
         <router-view />
       </transition>
