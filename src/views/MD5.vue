@@ -497,7 +497,14 @@ export default {
             )
           }
         })
-        .catch(error => console.log(error.response))
+        .catch(error => {
+          this.$notify({
+            group: 'notif',
+            type: 'error',
+            title: 'Database Connection failed',
+            text: 'Connection to database failed. Please try again later.'
+          })
+        })
     },
     decode() {
       axios
@@ -531,7 +538,14 @@ export default {
           }
           this.decodeInput = ''
         })
-        .catch(error => console.log(error.response))
+        .catch(error => {
+          this.$notify({
+            group: 'notif',
+            type: 'error',
+            title: 'Database Connection failed',
+            text: 'Connection to database failed. Please try again later.'
+          })
+        })
     }
   },
   computed: {
