@@ -15,11 +15,11 @@ const routes = [
     name: 'AES',
     component: () => import('../views/AES.vue')
   },
-  {
-    path: '/rsa',
-    name: 'RSA',
-    component: () => import('../views/RSA.vue')
-  },
+  // {
+  //   path: '/rsa',
+  //   name: 'RSA',
+  //   component: () => import('../views/RSA.vue')
+  // },
   {
     path: '/md-5',
     name: 'MD-5',
