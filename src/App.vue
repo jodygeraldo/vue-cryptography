@@ -72,6 +72,12 @@ export default {
           disabled: false,
           tooltip:
             'Hash function cryptography Secure Hash Algorithm 2 (SHA-256)'
+        },
+        {
+          name: 'SHA-3',
+          disabled: false,
+          tooltip:
+            'Hash function cryptography Secure Hash Algorithm 3 (SHA-3) with 512 bits output hash length'
         }
       ]
     }

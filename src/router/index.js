@@ -31,6 +31,11 @@ const routes = [
     component: () => import('../views/SHA256.vue')
   },
   {
+    path: '/sha-3',
+    name: 'SHA-3',
+    component: () => import('../views/SHA3.vue')
+  },
+  {
     path: '/404',
     component: () => import('../views/404.vue')
   },
