@@ -108,10 +108,10 @@
         >
       </b-card>
     </b-card-group>
-    <b-alert show variant="info" class="text-center"
-      >The decryption of a 'hash' is impossible, but we can use reverse lookup
-      using database</b-alert
-    >
+    <b-alert show variant="info" class="text-center">
+      SHA3 encryption using cryptoJS, the decryption of a 'hash' is impossible,
+      but we can use reverse lookup using database
+    </b-alert>
   </div>
 </template>
 
