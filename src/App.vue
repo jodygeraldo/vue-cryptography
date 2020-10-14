@@ -15,7 +15,7 @@
             exact-active-class="active"
             :disabled="page.disabled"
             tabindex="0"
-            v-b-tooltip.top
+            v-b-tooltip.hover
             :title="page.tooltip"
             class="unactiveLinkColor"
           >
