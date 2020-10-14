@@ -17,6 +17,7 @@
             tabindex="0"
             v-b-tooltip.top
             :title="page.tooltip"
+            class="unactiveLinkColor"
           >
             {{ page.name }}
           </b-nav-item>
@@ -89,6 +90,12 @@ export default {
   font-size: calc(1.625rem + 2.5vw);
   font-weight: 300;
   line-height: 1.2;
+}
+
+.unactiveLinkColor {
+  a {
+    color: var(--teal);
+  }
 }
 
 .slide-fade-enter {
