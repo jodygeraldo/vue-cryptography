@@ -24,7 +24,11 @@
         </b-nav>
       </div>
 
-      <notifications group="notif" animation-type="velocity" />
+      <notifications
+        group="notif"
+        animation-type="velocity"
+        :duration="notifDuration"
+      />
 
       <transition name="slide-fade" mode="out-in">
         <router-view />
@@ -49,6 +53,7 @@
 export default {
   data() {
     return {
+      notifDuration: 5000,
       pages: [
         {
           name: 'Classic',
