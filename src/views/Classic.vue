@@ -128,8 +128,8 @@
       </b-card>
     </b-card-group>
     <b-alert show variant="info" class="text-center">
-      The rotation is ASCII printable characters, if the private key is greater
-      than 94 it will use default private key (3)
+      The rotation is ASCII printable characters, if the private key is less
+      than 0 or greater than 94 it will use default private key (3)
     </b-alert>
   </div>
 </template>
@@ -221,12 +221,12 @@ export default {
   },
   watch: {
     encodeKey() {
-      if (this.encodeKey < 0) {
+      if (this.encodeKey < 0 || this.encodeKey > 94) {
         this.encodeKey = 3
       }
     },
     decodeKey() {
-      if (this.decodeKey < 0) {
+      if (this.decodeKey < 0 || this.denodeKey > 94) {
         this.decodeKey = 3
       }
     }
