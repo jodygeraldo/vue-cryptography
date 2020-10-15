@@ -13,7 +13,6 @@
             :to="{ name: `${page.name}` }"
             exact
             exact-active-class="active"
-            :disabled="page.disabled"
             tabindex="0"
             v-b-tooltip.hover
             :title="page.tooltip"
@@ -57,30 +56,24 @@ export default {
       pages: [
         {
           name: 'Classic',
-          disabled: false,
           tooltip: 'Symmetric key cryptography classic'
         },
         {
           name: 'AES',
-          disabled: false,
           tooltip: 'Symmetric key cryptography Advanced Encryption Standard'
         },
-        // { name: 'RSA', disabled: true, tooltip: 'RSA Unavailable' },
         {
           name: 'MD-5',
-          disabled: false,
           tooltip:
             'Hash function cryptography Message Digest Algorithm 5 (MD-5)'
         },
         {
           name: 'SHA-256',
-          disabled: false,
           tooltip:
             'Hash function cryptography Secure Hash Algorithm 2 (SHA-256)'
         },
         {
           name: 'SHA-3',
-          disabled: false,
           tooltip:
             'Hash function cryptography Secure Hash Algorithm 3 (SHA-3) with 512 bits output hash length'
         }
