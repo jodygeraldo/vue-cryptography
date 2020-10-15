@@ -128,7 +128,8 @@
       </b-card>
     </b-card-group>
     <b-alert show variant="info" class="text-center">
-      The rotation is ASCII printable characters
+      The rotation is ASCII printable characters, if the private key is greater
+      than 94 it will use default private key (3)
     </b-alert>
   </div>
 </template>
@@ -156,9 +157,9 @@ export default {
 
       let key = 3
       if (type === 'encode') {
-        key = this.encodeKey
+        key = this.encodeKey < 94 ? this.encodeKey : 3
       } else if (type === 'decode') {
-        key = this.decodeKey
+        key = this.decodeKey < 94 ? this.decodeKey : 3
       }
 
       const spliced = baseRotation.splice(0, key)
