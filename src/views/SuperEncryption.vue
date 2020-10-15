@@ -1,0 +1,197 @@
+<template>
+  <div>
+    <b-card-group deck class="mb-3">
+      <b-card header="Encryption" header-tag="header">
+        <b-card-text>
+          <b-form-group
+            class="mb-3"
+            label="Text to Encode"
+            label-for="encodeInput"
+          >
+            <b-form-input
+              id="encodeInput"
+              type="text"
+              v-model="encodeInput"
+              placeholder="Enter text"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="mb-3" label="Password" label-for="encodeKey">
+            <b-form-input
+              id="encodeKey"
+              type="password"
+              v-model="encodeKey"
+              placeholder="Enter password"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            class="mb-3"
+            label="Original Text"
+            label-for="originalText"
+          >
+            <b-form-input
+              id="originalText"
+              type="text"
+              v-model="originalText"
+              disabled
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="mb-3" label="Secret Code" label-for="secretCode">
+            <b-form-input
+              id="secretCode"
+              type="text"
+              v-model="secretCode"
+              disabled
+            ></b-form-input>
+          </b-form-group>
+        </b-card-text>
+        <b-button
+          variant="primary"
+          :disabled="encodeInputCheck"
+          @click.prevent="encode"
+          >Encode</b-button
+        >
+      </b-card>
+
+      <b-card header="Decryption" header-tag="header">
+        <b-card-text>
+          <b-form-group
+            class="mb-3"
+            label="Text to Decode"
+            label-for="decodeInput"
+          >
+            <b-form-input
+              id="decodeInput"
+              type="text"
+              v-model="decodeInput"
+              placeholder="Enter encrypted text"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="mb-3" label="Password" label-for="decodeKey">
+            <b-form-input
+              id="decodeKey"
+              type="password"
+              v-model="decodeKey"
+              placeholder="Enter password"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            class="mb-3"
+            label="Original Code"
+            label-for="originalCode"
+          >
+            <b-form-input
+              id="originalCode"
+              type="text"
+              v-model="originalCode"
+              disabled
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            class="mb-3"
+            label="Secret Message"
+            label-for="secretMessage"
+          >
+            <b-form-input
+              id="secretMessage"
+              type="text"
+              v-model="secretMessage"
+              disabled
+            ></b-form-input>
+          </b-form-group>
+        </b-card-text>
+        <b-button
+          variant="primary"
+          :disabled="decodeInputCheck"
+          @click.prevent="decode"
+          >Decode</b-button
+        >
+      </b-card>
+    </b-card-group>
+
+    <b-alert show variant="info" class="text-center">
+      The rotation is ASCII printable characters
+    </b-alert>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Super Encryption',
+  data() {
+    return {
+      encodeInput: '',
+      decodeInput: '',
+      encodeKey: '',
+      decodeKey: '',
+      originalText: '',
+      secretCode: '',
+      originalCode: '',
+      secretMessage: ''
+    }
+  },
+  methods: {
+    encode() {
+      this.originalText = this.encodeInput
+      // TODO ENCRYPT LOGIC
+
+      this.encodeInput = ''
+      this.encodeKey = ''
+
+      this.$notify({
+        group: 'notif',
+        type: 'success',
+        title: 'Text Successfully Encrypted',
+        text: 'You can copy the encrypted text from secret code input field.'
+      })
+    },
+    decode() {
+      this.originalCode = this.decodeInput
+      // TODO DECRYPT LOGIC
+
+      this.decodeInput = ''
+      this.decodeKey = ''
+
+      if (this.secretMessage !== '') {
+        this.$notify({
+          group: 'notif',
+          type: 'success',
+          title: 'Text Successfully Decrypted',
+          text:
+            'The encrypted text was successfully decrypted, you can see the result in the secret message input field.'
+        })
+      } else {
+        this.secretMessage =
+          'There is no secret message from the combination of given encrypted text and the password.'
+
+        this.$notify({
+          group: 'notif',
+          type: 'warn',
+          title: 'Decryption Process Failed',
+          text:
+            'There is no secret message from the combination of given encrypted text and the password.'
+        })
+      }
+    }
+  },
+  computed: {
+    encodeInputCheck() {
+      if (this.encodeInput === '' || this.encodeKey === '') return true
+      return false
+    },
+    decodeInputCheck() {
+      if (this.decodeInput === '' || this.decodeKey === '') return true
+      return false
+    }
+  }
+}
+</script>

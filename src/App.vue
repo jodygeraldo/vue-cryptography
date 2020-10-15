@@ -59,6 +59,11 @@ export default {
           tooltip: 'Symmetric key cryptography classic'
         },
         {
+          name: 'Super Encryption',
+          tooltip:
+            'Symmetric key cryptography Super Encryption using substitution and transposition'
+        },
+        {
           name: 'AES',
           tooltip: 'Symmetric key cryptography Advanced Encryption Standard'
         },
