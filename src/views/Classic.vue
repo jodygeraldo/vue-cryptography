@@ -219,6 +219,18 @@ export default {
       return false
     }
   },
+  watch: {
+    encodeKey() {
+      if (this.encodeKey < 0) {
+        this.encodeKey = 3
+      }
+    },
+    decodeKey() {
+      if (this.decodeKey < 0) {
+        this.decodeKey = 3
+      }
+    }
+  },
   created() {
     for (let i = 32; i <= 126; i++) {
       this.letterRotation.push(String.fromCharCode(i))
