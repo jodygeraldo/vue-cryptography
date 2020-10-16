@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/super-encryption',
-    name: 'Super Encryption',
+    name: 'SuperEncryption',
     component: () => import('../views/SuperEncryption.vue')
   },
   {
