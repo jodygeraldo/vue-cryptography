@@ -11,6 +11,11 @@ const routes = [
     component: Classic
   },
   {
+    path: '/super-encryption',
+    name: 'SuperEncryption',
+    component: () => import('../views/SuperEncryption.vue')
+  },
+  {
     path: '/aes',
     name: 'AES',
     component: () => import('../views/AES.vue')

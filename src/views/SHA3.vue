@@ -117,7 +117,6 @@
 
 <script>
 import SHA3 from 'crypto-js/sha3'
-import encUTF8 from 'crypto-js/enc-utf8'
 import axios from 'axios'
 
 export default {
