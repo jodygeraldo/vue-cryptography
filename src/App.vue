@@ -1,27 +1,9 @@
 <template>
   <div id="app">
     <b-container>
-      <h1 class="title mb-3 text-center">Cryptography</h1>
+      <TheHeading />
 
-      <!-- <router-link :to="{ name: 'Classic' }">Classic</router-link> -->
-      <!-- <router-link :to="{ name: 'AES' }">About</router-link> -->
-      <div class="mb-3">
-        <b-nav tabs align="center">
-          <b-nav-item
-            v-for="page in pages"
-            :key="page.name"
-            :to="{ name: `${page.name}` }"
-            exact
-            exact-active-class="active"
-            tabindex="0"
-            v-b-tooltip.hover
-            :title="page.tooltip"
-            class="unactiveLinkColor"
-          >
-            {{ page.label }}
-          </b-nav-item>
-        </b-nav>
-      </div>
+      <TheNavigation />
 
       <notifications
         group="notif"
@@ -33,62 +15,25 @@
         <router-view />
       </transition>
 
-      <div>
-        <b-navbar>
-          <b-navbar-brand :to="{ name: 'Classic' }"
-            >JodyCryptoVue</b-navbar-brand
-          >
-
-          <b-navbar-nav class="ml-auto">
-            <b-nav-text>Copyright &copy; 2020 Jody Geraldo</b-nav-text>
-          </b-navbar-nav>
-        </b-navbar>
-      </div>
+      <TheFooter />
     </b-container>
   </div>
 </template>
 
 <script>
+import TheHeading from '@/components/layout/TheHeading.vue'
+import TheNavigation from '@/components/layout/TheNavigation.vue'
+import TheFooter from '@/components/layout/TheFooter.vue'
+
 export default {
+  components: {
+    TheHeading,
+    TheNavigation,
+    TheFooter
+  },
   data() {
     return {
-      notifDuration: 5000,
-      pages: [
-        {
-          name: 'Classic',
-          label: 'Classic',
-          tooltip: 'Symmetric key cryptography classic'
-        },
-        {
-          name: 'SuperEncryption',
-          label: 'Super Encryption',
-          tooltip:
-            'Symmetric key cryptography Super Encryption using substitution and transposition'
-        },
-        {
-          name: 'AES',
-          label: 'AES',
-          tooltip: 'Symmetric key cryptography Advanced Encryption Standard'
-        },
-        {
-          name: 'MD-5',
-          label: 'MD-5',
-          tooltip:
-            'Hash function cryptography Message Digest Algorithm 5 (MD-5)'
-        },
-        {
-          name: 'SHA-256',
-          label: 'SHA-256',
-          tooltip:
-            'Hash function cryptography Secure Hash Algorithm 2 (SHA-256)'
-        },
-        {
-          name: 'SHA-3',
-          label: 'SHA-3',
-          tooltip:
-            'Hash function cryptography Secure Hash Algorithm 3 (SHA-3) with 512 bits output hash length'
-        }
-      ]
+      notifDuration: 5000
     }
   }
 }
@@ -99,18 +44,6 @@ export default {
   font-family: Segoe UI, Roboto, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.title {
-  font-size: calc(1.625rem + 2.5vw);
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-.unactiveLinkColor {
-  a {
-    color: var(--teal);
-  }
 }
 
 .slide-fade-enter {
