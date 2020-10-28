@@ -6,6 +6,9 @@ import App from './App.vue'
 import router from './router'
 import Notifications from 'vue-notification'
 import velocity from 'velocity-animate'
+import UUID from 'vue-uuid'
+
+Vue.use(UUID)
 
 Vue.use(Notifications, { velocity })
 
