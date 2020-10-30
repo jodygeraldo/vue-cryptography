@@ -3,118 +3,136 @@
     <b-card-group deck class="mb-3">
       <b-card header="Encryption" header-tag="header">
         <b-card-text>
-          <b-form-group
-            class="mb-3"
-            label="Text to Encode"
-            label-for="encodeInput"
-          >
-            <b-form-input
-              id="encodeInput"
-              type="text"
-              v-model="encodeInput"
-              placeholder="Enter text"
-              required
-            ></b-form-input>
-          </b-form-group>
+          <b-form @submit.prevent="encode">
+            <b-form-group
+              class="mb-3"
+              label="Text to Encode"
+              label-for="encodeInput"
+            >
+              <b-form-input
+                id="encodeInput"
+                type="text"
+                v-model="encodeInput"
+                placeholder="Enter text"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group class="mb-3" label="Password" label-for="encodeKey">
-            <b-form-input
-              id="encodeKey"
-              type="password"
-              v-model="encodeKey"
-              placeholder="Enter password"
-              required
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Password"
+              label-for="encodeKey"
+              :invalid-feedback="encodeKeyFeedback"
+              :state="encodeKeyInvalidState"
+            >
+              <b-form-input
+                id="encodeKey"
+                type="password"
+                v-model="encodeKey"
+                placeholder="Enter password"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group
-            class="mb-3"
-            label="Original Text"
-            label-for="originalText"
-          >
-            <b-form-input
-              id="originalText"
-              type="text"
-              v-model="originalText"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Original Text"
+              label-for="originalText"
+            >
+              <b-form-input
+                id="originalText"
+                type="text"
+                v-model="originalText"
+                disabled
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group class="mb-3" label="Secret Code" label-for="secretCode">
-            <b-form-input
-              id="secretCode"
-              type="text"
-              v-model="secretCode"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Secret Code"
+              label-for="secretCode"
+            >
+              <b-form-input
+                id="secretCode"
+                type="text"
+                v-model="secretCode"
+                disabled
+              ></b-form-input>
+            </b-form-group>
+
+            <b-button
+              type="submit"
+              variant="primary"
+              :disabled="encodeInputCheck"
+            >
+              Encode
+            </b-button>
+          </b-form>
         </b-card-text>
-        <b-button
-          variant="primary"
-          :disabled="encodeInputCheck"
-          @click.prevent="encode"
-          >Encode</b-button
-        >
       </b-card>
 
       <b-card header="Decryption" header-tag="header">
         <b-card-text>
-          <b-form-group
-            class="mb-3"
-            label="Text to Decode"
-            label-for="decodeInput"
-          >
-            <b-form-input
-              id="decodeInput"
-              type="text"
-              v-model="decodeInput"
-              placeholder="Enter encrypted text"
-              required
-            ></b-form-input>
-          </b-form-group>
+          <b-form @submit.prevent="decode">
+            <b-form-group
+              class="mb-3"
+              label="Text to Decode"
+              label-for="decodeInput"
+            >
+              <b-form-input
+                id="decodeInput"
+                type="text"
+                v-model="decodeInput"
+                placeholder="Enter encrypted text"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group class="mb-3" label="Password" label-for="decodeKey">
-            <b-form-input
-              id="decodeKey"
-              type="password"
-              v-model="decodeKey"
-              placeholder="Enter password"
-              required
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group class="mb-3" label="Password" label-for="decodeKey">
+              <b-form-input
+                id="decodeKey"
+                type="password"
+                v-model="decodeKey"
+                placeholder="Enter password"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group
-            class="mb-3"
-            label="Original Code"
-            label-for="originalCode"
-          >
-            <b-form-input
-              id="originalCode"
-              type="text"
-              v-model="originalCode"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Original Code"
+              label-for="originalCode"
+            >
+              <b-form-input
+                id="originalCode"
+                type="text"
+                v-model="originalCode"
+                disabled
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group
-            class="mb-3"
-            label="Secret Message"
-            label-for="secretMessage"
-          >
-            <b-form-input
-              id="secretMessage"
-              type="text"
-              v-model="secretMessage"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Secret Message"
+              label-for="secretMessage"
+            >
+              <b-form-input
+                id="secretMessage"
+                type="text"
+                v-model="secretMessage"
+                disabled
+              ></b-form-input>
+            </b-form-group>
+
+            <b-button
+              type="submit"
+              variant="primary"
+              :disabled="decodeInputCheck"
+            >
+              Decode
+            </b-button>
+          </b-form>
         </b-card-text>
-        <b-button
-          variant="primary"
-          :disabled="decodeInputCheck"
-          @click.prevent="decode"
-          >Decode</b-button
-        >
       </b-card>
     </b-card-group>
 
@@ -125,8 +143,6 @@
 </template>
 
 <script>
-import SHA3 from 'crypto-js/sha3'
-
 export default {
   name: 'SuperEncryption',
   data() {
@@ -144,172 +160,160 @@ export default {
     }
   },
   methods: {
-    substitution(type, decryptedTranspose) {
-      if (type === 'encode') {
-        const plainIndex = []
-        const substitutionCipher = []
+    substitutionEncode() {
+      const plainIndex = []
+      const substitutionCipher = []
 
-        for (const el of this.encodeInput)
-          plainIndex.push(this.letterRotation.indexOf(el))
+      for (const el of this.encodeInput)
+        plainIndex.push(this.letterRotation.indexOf(el))
 
-        for (const el of plainIndex)
-          substitutionCipher.push(this.substitutionArray[el])
+      for (const el of plainIndex)
+        substitutionCipher.push(this.substitutionArray[el])
 
-        return substitutionCipher
-      } else if (type === 'decode') {
-        const cipherIndex = []
-        const substitutionPlain = []
+      return substitutionCipher
+    },
+    substitutionDecode(decryptedTranspose) {
+      const cipherIndex = []
+      const substitutionPlain = []
 
-        for (const el of decryptedTranspose)
-          cipherIndex.push(this.substitutionArray.indexOf(el))
-        for (const el of cipherIndex)
-          substitutionPlain.push(this.letterRotation[el])
+      for (const el of decryptedTranspose)
+        cipherIndex.push(this.substitutionArray.indexOf(el))
 
-        const decryptedText = substitutionPlain.join('')
+      for (const el of cipherIndex)
+        substitutionPlain.push(this.letterRotation[el])
 
-        return decryptedText
-      }
+      const decryptedText = substitutionPlain.join('')
+
+      return decryptedText
     },
     transpose(a) {
-      return Object.keys(a[0]).map(function(c) {
-        return a.map(function(r) {
+      return Object.keys(a[0]).map(c => {
+        return a.map(r => {
           return r[c]
         })
       })
     },
-    transposition(type) {
-      if (type === 'encode') {
-        const substitutionTextArray = this.substitution('encode')
-        const passwordArray = this.encodeKey.split('')
+    convertToMultipleArray(array, passwordLength) {
+      const size = 3
+      let arrayOfArrays = []
+      if (array.length % 3 === 0) {
+        array.push(`~`)
+        array.push(`~`)
+        array.push(`~${passwordLength}~`)
 
-        const combination = passwordArray.concat(substitutionTextArray)
+        for (let i = 0; i < array.length; i += size)
+          arrayOfArrays.push(array.slice(i, i + size))
+      } else if (array.length % 3 === 1) {
+        array.push('~')
+        array.push(`~${passwordLength}~`)
 
-        const size = 3
-        let arrayOfArrays = []
-        if (combination.length % 3 === 0) {
-          combination.push(`~`)
-          combination.push(`~`)
-          combination.push(`~${passwordArray.length}~`)
+        for (let i = 0; i < array.length; i += size)
+          arrayOfArrays.push(array.slice(i, i + size))
+      } else if (array.length % 3 === 2) {
+        array.push(`~${passwordLength}~`)
 
-          for (let i = 0; i < combination.length; i += size)
-            arrayOfArrays.push(combination.slice(i, i + size))
-        } else if (combination.length % 3 === 1) {
-          for (let i = 0; i < combination.length; i += size)
-            arrayOfArrays.push(combination.slice(i, i + size))
-
-          arrayOfArrays[arrayOfArrays.length - 1].push('~')
-          arrayOfArrays[arrayOfArrays.length - 1].push(
-            `~${passwordArray.length}~`
-          )
-        } else if (combination.length % 3 === 2) {
-          for (let i = 0; i < combination.length; i += size)
-            arrayOfArrays.push(combination.slice(i, i + size))
-          arrayOfArrays[arrayOfArrays.length - 1].push(
-            `~${passwordArray.length}~`
-          )
-        }
-
-        const transposetedArrays = this.transpose(arrayOfArrays)
-
-        let encryptedTextArray = []
-        for (let i = 0; i < transposetedArrays.length; i++) {
-          encryptedTextArray = encryptedTextArray.concat(transposetedArrays[i])
-        }
-
-        const encryptedText = encryptedTextArray.join('')
-
-        return encryptedText
-      } else if (type === 'decode') {
-        const decodeInputArray = this.decodeInput.split('')
-        let passwordLength
-        if (
-          decodeInputArray[decodeInputArray.length - 1] === '~' &&
-          decodeInputArray[decodeInputArray.length - 3] === '~'
-        ) {
-          passwordLength = +decodeInputArray[decodeInputArray.length - 2]
-          decodeInputArray.splice(decodeInputArray.length - 2, 2)
-        } else if (
-          decodeInputArray[decodeInputArray.length - 1] === '~' &&
-          decodeInputArray[decodeInputArray.length - 3] !== '~' &&
-          decodeInputArray[decodeInputArray.length - 4] === '~'
-        ) {
-          const firstDigit = decodeInputArray[decodeInputArray.length - 3]
-          const secondDigit = decodeInputArray[decodeInputArray.length - 2]
-          const combine = firstDigit + secondDigit
-          passwordLength = +combine
-          decodeInputArray.splice(decodeInputArray.length - 3, 3)
-        } else if (
-          decodeInputArray[decodeInputArray.length - 1] === '~' &&
-          decodeInputArray[decodeInputArray.length - 3] !== '~' &&
-          decodeInputArray[decodeInputArray.length - 4] !== '~' &&
-          decodeInputArray[decodeInputArray.length - 5] === '~'
-        ) {
-          const firstDigit = decodeInputArray[decodeInputArray.length - 4]
-          const secondDigit = decodeInputArray[decodeInputArray.length - 3]
-          const thirdDigit = decodeInputArray[decodeInputArray.length - 2]
-          const combine = firstDigit + secondDigit + thirdDigit
-          passwordLength = +combine
-          decodeInputArray.splice(decodeInputArray.length - 4, 4)
-        } else if (
-          decodeInputArray[decodeInputArray.length - 1] === '~' &&
-          decodeInputArray[decodeInputArray.length - 3] !== '~' &&
-          decodeInputArray[decodeInputArray.length - 4] !== '~' &&
-          decodeInputArray[decodeInputArray.length - 5] !== '~' &&
-          decodeInputArray[decodeInputArray.length - 6] === '~'
-        ) {
-          const firstDigit = decodeInputArray[decodeInputArray.length - 5]
-          const secondDigit = decodeInputArray[decodeInputArray.length - 4]
-          const thirdDigit = decodeInputArray[decodeInputArray.length - 3]
-          const fourthDigit = decodeInputArray[decodeInputArray.length - 2]
-          const combine = firstDigit + secondDigit + thirdDigit + fourthDigit
-          passwordLength = +combine
-          decodeInputArray.splice(decodeInputArray.length - 5, 5)
-        }
-
-        const decodeInput = decodeInputArray.join('')
-
-        const passwordArray = this.decodeKey.split('')
-
-        const size = decodeInput.length / 3
-        let arrayOfArrays = []
-        for (let i = 0; i < decodeInput.length; i += size)
-          arrayOfArrays.push(decodeInput.slice(i, i + size))
-
-        const transposetedArrays = this.transpose(arrayOfArrays)
-
-        let decryptedTextArray = []
-        for (let i = 0; i < transposetedArrays.length; i++) {
-          decryptedTextArray = decryptedTextArray.concat(transposetedArrays[i])
-        }
-
-        const decryptedTransposeText = decryptedTextArray.filter(
-          el => el !== '~'
-        )
-
-        const decryptedPassword = decryptedTransposeText.splice(
-          0,
-          passwordLength
-        )
-        if (
-          JSON.stringify(decryptedPassword) === JSON.stringify(passwordArray)
-        ) {
-          const decryptedText = this.substitution(
-            'decode',
-            decryptedTransposeText
-          )
-
-          return decryptedText
-        }
-
-        const decryptedText = ''
-        return decryptedText
+        for (let i = 0; i < array.length; i += size)
+          arrayOfArrays.push(array.slice(i, i + size))
       }
+
+      return arrayOfArrays
+    },
+    transpositionEncode() {
+      const substitutionTextArray = this.substitutionEncode()
+      const passwordArray = this.encodeKey.split('')
+
+      const combination = passwordArray.concat(substitutionTextArray)
+
+      const arrayOfArrays = this.convertToMultipleArray(
+        combination,
+        passwordArray.length
+      )
+
+      const transposeArrays = this.transpose(arrayOfArrays)
+
+      let encryptedTextArray = []
+      for (let i = 0; i < transposeArrays.length; i++) {
+        encryptedTextArray = encryptedTextArray.concat(transposeArrays[i])
+      }
+
+      return encryptedTextArray.join('')
+    },
+    transpositionDecode() {
+      const decodeInputArray = this.decodeInput.split('')
+      let passwordLength = null
+
+      if (
+        decodeInputArray[decodeInputArray.length - 1] === '~' &&
+        decodeInputArray[decodeInputArray.length - 3] === '~'
+      ) {
+        passwordLength = +decodeInputArray[decodeInputArray.length - 2]
+        decodeInputArray.splice(decodeInputArray.length - 2, 2)
+      } else if (
+        decodeInputArray[decodeInputArray.length - 1] === '~' &&
+        decodeInputArray[decodeInputArray.length - 3] !== '~' &&
+        decodeInputArray[decodeInputArray.length - 4] === '~'
+      ) {
+        const firstDigit = decodeInputArray[decodeInputArray.length - 3]
+        const secondDigit = decodeInputArray[decodeInputArray.length - 2]
+        const combine = firstDigit + secondDigit
+        passwordLength = +combine
+        decodeInputArray.splice(decodeInputArray.length - 3, 3)
+      } else if (
+        decodeInputArray[decodeInputArray.length - 1] === '~' &&
+        decodeInputArray[decodeInputArray.length - 3] !== '~' &&
+        decodeInputArray[decodeInputArray.length - 4] !== '~' &&
+        decodeInputArray[decodeInputArray.length - 5] === '~'
+      ) {
+        const firstDigit = decodeInputArray[decodeInputArray.length - 4]
+        const secondDigit = decodeInputArray[decodeInputArray.length - 3]
+        const thirdDigit = decodeInputArray[decodeInputArray.length - 2]
+        const combine = firstDigit + secondDigit + thirdDigit
+        passwordLength = +combine
+        decodeInputArray.splice(decodeInputArray.length - 4, 4)
+      } else if (
+        decodeInputArray[decodeInputArray.length - 1] === '~' &&
+        decodeInputArray[decodeInputArray.length - 3] !== '~' &&
+        decodeInputArray[decodeInputArray.length - 4] !== '~' &&
+        decodeInputArray[decodeInputArray.length - 5] !== '~' &&
+        decodeInputArray[decodeInputArray.length - 6] === '~'
+      ) {
+        const firstDigit = decodeInputArray[decodeInputArray.length - 5]
+        const secondDigit = decodeInputArray[decodeInputArray.length - 4]
+        const thirdDigit = decodeInputArray[decodeInputArray.length - 3]
+        const fourthDigit = decodeInputArray[decodeInputArray.length - 2]
+        const combine = firstDigit + secondDigit + thirdDigit + fourthDigit
+        passwordLength = +combine
+        decodeInputArray.splice(decodeInputArray.length - 5, 5)
+      }
+
+      const decodeInput = decodeInputArray.join('')
+
+      const passwordArray = this.decodeKey.split('')
+
+      const size = decodeInput.length / 3
+      let arrayOfArrays = []
+      for (let i = 0; i < decodeInput.length; i += size)
+        arrayOfArrays.push(decodeInput.slice(i, i + size))
+
+      const transposeArrays = this.transpose(arrayOfArrays)
+
+      let decryptedTextArray = []
+      for (let i = 0; i < transposeArrays.length; i++) {
+        decryptedTextArray = decryptedTextArray.concat(transposeArrays[i])
+      }
+
+      const decryptedTransposeText = decryptedTextArray.filter(el => el !== '~')
+
+      const decryptedPassword = decryptedTransposeText.splice(0, passwordLength)
+      if (JSON.stringify(decryptedPassword) === JSON.stringify(passwordArray))
+        return this.substitutionDecode(decryptedTransposeText)
+
+      return null
     },
     encode() {
       this.originalText = this.encodeInput
 
-      this.substitution('encode')
-      this.secretCode = this.transposition('encode')
+      this.secretCode = this.transpositionEncode()
 
       this.encodeInput = ''
       this.encodeKey = ''
@@ -324,13 +328,12 @@ export default {
     decode() {
       this.originalCode = this.decodeInput
 
-      const decryptedText = this.transposition('decode')
-      this.secretMessage = decryptedText
+      this.secretMessage = this.transpositionDecode()
 
       this.decodeInput = ''
       this.decodeKey = ''
 
-      if (this.secretMessage !== '') {
+      if (this.secretMessage) {
         this.$notify({
           group: 'notif',
           type: 'success',
@@ -354,12 +357,26 @@ export default {
   },
   computed: {
     encodeInputCheck() {
-      if (this.encodeInput === '' || this.encodeKey === '') return true
+      if (
+        this.encodeInput === '' ||
+        this.encodeKey === '' ||
+        this.encodeKey.length > 16
+      )
+        return true
       return false
     },
     decodeInputCheck() {
       if (this.decodeInput === '' || this.decodeKey === '') return true
       return false
+    },
+    encodeKeyFeedback() {
+      if (this.encodeKey.length > 16) {
+        return 'The maximum password length is 16'
+      }
+      return null
+    },
+    encodeKeyInvalidState() {
+      return this.encodeKey.length > 0 && this.encodeKey.length <= 16
     }
   },
   created() {
@@ -367,15 +384,11 @@ export default {
       this.letterRotation.push(String.fromCharCode(i))
     }
 
-    let subsArray123 = [],
-      subsArray3 = []
-    for (let i = 35; i <= 126; i++) {
-      subsArray123.push(String.fromCharCode(i))
-    }
-    for (let i = 32; i <= 34; i++) {
-      subsArray3.push(String.fromCharCode(i))
-    }
-    this.substitutionArray = subsArray123.concat(subsArray3)
+    this.substitutionArray = this.letterRotation.slice(0)
+
+    const spliced = this.substitutionArray.splice(0, 3)
+
+    this.substitutionArray = this.substitutionArray.concat(spliced)
   }
 }
 </script>
