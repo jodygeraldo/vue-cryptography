@@ -168,7 +168,6 @@ export default {
           }
         })
         .catch(error => {
-          console.log(error.response)
           this.$notify({
             group: 'notif',
             type: 'error',
