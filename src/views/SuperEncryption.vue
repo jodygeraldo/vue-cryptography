@@ -3,118 +3,136 @@
     <b-card-group deck class="mb-3">
       <b-card header="Encryption" header-tag="header">
         <b-card-text>
-          <b-form-group
-            class="mb-3"
-            label="Text to Encode"
-            label-for="encodeInput"
-          >
-            <b-form-input
-              id="encodeInput"
-              type="text"
-              v-model="encodeInput"
-              placeholder="Enter text"
-              required
-            ></b-form-input>
-          </b-form-group>
+          <b-form @submit.prevent="encode">
+            <b-form-group
+              class="mb-3"
+              label="Text to Encode"
+              label-for="encodeInput"
+            >
+              <b-form-input
+                id="encodeInput"
+                type="text"
+                v-model="encodeInput"
+                placeholder="Enter text"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group class="mb-3" label="Password" label-for="encodeKey">
-            <b-form-input
-              id="encodeKey"
-              type="password"
-              v-model="encodeKey"
-              placeholder="Enter password"
-              required
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Password"
+              label-for="encodeKey"
+              :invalid-feedback="encodeKeyFeedback"
+              :state="encodeKeyInvalidState"
+            >
+              <b-form-input
+                id="encodeKey"
+                type="password"
+                v-model="encodeKey"
+                placeholder="Enter password"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group
-            class="mb-3"
-            label="Original Text"
-            label-for="originalText"
-          >
-            <b-form-input
-              id="originalText"
-              type="text"
-              v-model="originalText"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Original Text"
+              label-for="originalText"
+            >
+              <b-form-input
+                id="originalText"
+                type="text"
+                v-model="originalText"
+                disabled
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group class="mb-3" label="Secret Code" label-for="secretCode">
-            <b-form-input
-              id="secretCode"
-              type="text"
-              v-model="secretCode"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Secret Code"
+              label-for="secretCode"
+            >
+              <b-form-input
+                id="secretCode"
+                type="text"
+                v-model="secretCode"
+                disabled
+              ></b-form-input>
+            </b-form-group>
+
+            <b-button
+              type="submit"
+              variant="primary"
+              :disabled="encodeInputCheck"
+            >
+              Encode
+            </b-button>
+          </b-form>
         </b-card-text>
-        <b-button
-          variant="primary"
-          :disabled="encodeInputCheck"
-          @click.prevent="encode"
-          >Encode</b-button
-        >
       </b-card>
 
       <b-card header="Decryption" header-tag="header">
         <b-card-text>
-          <b-form-group
-            class="mb-3"
-            label="Text to Decode"
-            label-for="decodeInput"
-          >
-            <b-form-input
-              id="decodeInput"
-              type="text"
-              v-model="decodeInput"
-              placeholder="Enter encrypted text"
-              required
-            ></b-form-input>
-          </b-form-group>
+          <b-form @submit.prevent="decode">
+            <b-form-group
+              class="mb-3"
+              label="Text to Decode"
+              label-for="decodeInput"
+            >
+              <b-form-input
+                id="decodeInput"
+                type="text"
+                v-model="decodeInput"
+                placeholder="Enter encrypted text"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group class="mb-3" label="Password" label-for="decodeKey">
-            <b-form-input
-              id="decodeKey"
-              type="password"
-              v-model="decodeKey"
-              placeholder="Enter password"
-              required
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group class="mb-3" label="Password" label-for="decodeKey">
+              <b-form-input
+                id="decodeKey"
+                type="password"
+                v-model="decodeKey"
+                placeholder="Enter password"
+                required
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group
-            class="mb-3"
-            label="Original Code"
-            label-for="originalCode"
-          >
-            <b-form-input
-              id="originalCode"
-              type="text"
-              v-model="originalCode"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Original Code"
+              label-for="originalCode"
+            >
+              <b-form-input
+                id="originalCode"
+                type="text"
+                v-model="originalCode"
+                disabled
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group
-            class="mb-3"
-            label="Secret Message"
-            label-for="secretMessage"
-          >
-            <b-form-input
-              id="secretMessage"
-              type="text"
-              v-model="secretMessage"
-              disabled
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group
+              class="mb-3"
+              label="Secret Message"
+              label-for="secretMessage"
+            >
+              <b-form-input
+                id="secretMessage"
+                type="text"
+                v-model="secretMessage"
+                disabled
+              ></b-form-input>
+            </b-form-group>
+
+            <b-button
+              type="submit"
+              variant="primary"
+              :disabled="decodeInputCheck"
+            >
+              Decode
+            </b-button>
+          </b-form>
         </b-card-text>
-        <b-button
-          variant="primary"
-          :disabled="decodeInputCheck"
-          @click.prevent="decode"
-          >Decode</b-button
-        >
       </b-card>
     </b-card-group>
 
@@ -341,12 +359,26 @@ export default {
   },
   computed: {
     encodeInputCheck() {
-      if (this.encodeInput === '' || this.encodeKey === '') return true
+      if (
+        this.encodeInput === '' ||
+        this.encodeKey === '' ||
+        this.encodeKey.length > 16
+      )
+        return true
       return false
     },
     decodeInputCheck() {
       if (this.decodeInput === '' || this.decodeKey === '') return true
       return false
+    },
+    encodeKeyFeedback() {
+      if (this.encodeKey.length > 16) {
+        return 'The maximum password length is 16'
+      }
+      return null
+    },
+    encodeKeyInvalidState() {
+      return this.encodeKey.length > 0 && this.encodeKey.length <= 16
     }
   },
   created() {
