@@ -1,16 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Classic from '../views/Classic.vue'
-import Test from '../views/Test.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/test',
-    name: 'Test',
-    component: Test
-  },
   {
     path: '/',
     name: 'Classic',
