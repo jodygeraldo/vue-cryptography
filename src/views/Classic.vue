@@ -152,14 +152,14 @@ export default {
   },
   methods: {
     getCodeRotation(type) {
-      let baseRotation = this.letterRotation.slice(0)
-
       let key = 3
       if (type === 'encode') {
         key = this.encodeKey < 94 ? this.encodeKey : 3
       } else if (type === 'decode') {
         key = this.decodeKey < 94 ? this.decodeKey : 3
       }
+
+      const baseRotation = this.letterRotation.slice(0)
 
       const spliced = baseRotation.splice(0, key)
       baseRotation = baseRotation.concat(spliced)
