@@ -147,13 +147,12 @@ export default {
       secretCode: '',
       originalCode: '',
       secretMessage: '',
-      letterRotation: [],
-      codeRotation: []
+      letterRotation: []
     }
   },
   methods: {
     getCodeRotation(type) {
-      const baseRotation = this.letterRotation.slice(0)
+      let baseRotation = this.letterRotation.slice(0)
 
       let key = 3
       if (type === 'encode') {
@@ -163,17 +162,18 @@ export default {
       }
 
       const spliced = baseRotation.splice(0, key)
-      this.codeRotation = baseRotation.concat(spliced)
+      baseRotation = baseRotation.concat(spliced)
+      return baseRotation
     },
     encode() {
-      this.getCodeRotation('encode')
+      const codeRotationArray = this.getCodeRotation('encode')
       const encodedLetter = []
       const plainIndex = []
 
       for (const el of this.encodeInput)
         plainIndex.push(this.letterRotation.indexOf(el))
 
-      for (const el of plainIndex) encodedLetter.push(this.codeRotation[el])
+      for (const el of plainIndex) encodedLetter.push(codeRotationArray[el])
 
       this.originalText = this.encodeInput
       this.secretCode = encodedLetter.join('')
@@ -187,12 +187,12 @@ export default {
       })
     },
     decode() {
-      this.getCodeRotation('decode')
+      const codeRotationArray = this.getCodeRotation('decode')
       const decodedLetter = []
       const cipherIndex = []
 
       for (const el of this.decodeInput)
-        cipherIndex.push(this.codeRotation.indexOf(el))
+        cipherIndex.push(codeRotationArray.indexOf(el))
 
       for (const el of cipherIndex) decodedLetter.push(this.letterRotation[el])
 
