@@ -258,32 +258,6 @@ export default {
         const combine = firstDigit + secondDigit
         passwordLength = +combine
         decodeInputArray.splice(decodeInputArray.length - 3, 3)
-      } else if (
-        decodeInputArray[decodeInputArray.length - 1] === '~' &&
-        decodeInputArray[decodeInputArray.length - 3] !== '~' &&
-        decodeInputArray[decodeInputArray.length - 4] !== '~' &&
-        decodeInputArray[decodeInputArray.length - 5] === '~'
-      ) {
-        const firstDigit = decodeInputArray[decodeInputArray.length - 4]
-        const secondDigit = decodeInputArray[decodeInputArray.length - 3]
-        const thirdDigit = decodeInputArray[decodeInputArray.length - 2]
-        const combine = firstDigit + secondDigit + thirdDigit
-        passwordLength = +combine
-        decodeInputArray.splice(decodeInputArray.length - 4, 4)
-      } else if (
-        decodeInputArray[decodeInputArray.length - 1] === '~' &&
-        decodeInputArray[decodeInputArray.length - 3] !== '~' &&
-        decodeInputArray[decodeInputArray.length - 4] !== '~' &&
-        decodeInputArray[decodeInputArray.length - 5] !== '~' &&
-        decodeInputArray[decodeInputArray.length - 6] === '~'
-      ) {
-        const firstDigit = decodeInputArray[decodeInputArray.length - 5]
-        const secondDigit = decodeInputArray[decodeInputArray.length - 4]
-        const thirdDigit = decodeInputArray[decodeInputArray.length - 3]
-        const fourthDigit = decodeInputArray[decodeInputArray.length - 2]
-        const combine = firstDigit + secondDigit + thirdDigit + fourthDigit
-        passwordLength = +combine
-        decodeInputArray.splice(decodeInputArray.length - 5, 5)
       }
 
       const decodeInput = decodeInputArray.join('')
