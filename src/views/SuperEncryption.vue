@@ -143,8 +143,6 @@
 </template>
 
 <script>
-import SHA3 from 'crypto-js/sha3'
-
 export default {
   name: 'SuperEncryption',
   data() {
