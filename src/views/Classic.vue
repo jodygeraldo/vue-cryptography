@@ -159,7 +159,7 @@ export default {
         key = this.decodeKey < 94 ? this.decodeKey : 3
       }
 
-      const baseRotation = this.letterRotation.slice(0)
+      let baseRotation = this.letterRotation.slice(0)
 
       const spliced = baseRotation.splice(0, key)
       baseRotation = baseRotation.concat(spliced)
