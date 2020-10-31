@@ -10,7 +10,8 @@ import {
   FormInputPlugin,
   FormTextareaPlugin,
   AlertPlugin,
-  ButtonPlugin
+  ButtonPlugin,
+  VBTooltipPlugin
 } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -25,3 +26,4 @@ Vue.use(FormInputPlugin)
 Vue.use(FormTextareaPlugin)
 Vue.use(AlertPlugin)
 Vue.use(ButtonPlugin)
+Vue.use(VBTooltipPlugin)
